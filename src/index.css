@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+nav {
+  background-color: #800e13;
+  padding: 0 24px 0 12px;
+}
+
+nav ul {
+  color: #fffbfc;
+  font-size: 24px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+nav ul li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li:has(a.homeLink) {
+  margin-left: auto;
+}
+
+a.homeLogoLink {
+  width: 200px;
+  display: flex;
+  align-items: center;
+}
+
+a.homeLogoLink img {
+  filter: brightness(0) saturate(100%) invert(92%) sepia(15%) saturate(177%)
+    hue-rotate(308deg) brightness(100%) contrast(112%);
+  max-width: 50px;
+}

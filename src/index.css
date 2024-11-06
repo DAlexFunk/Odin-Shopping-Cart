@@ -5,12 +5,27 @@
 }
 
 html {
-    font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+div#root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Nav */
 nav {
+  position: relative;
   background-color: #800e13;
-  padding: 0 24px 0 12px;
+  padding: 0 32px 0 12px;
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
 }
 
 nav ul {
@@ -19,7 +34,7 @@ nav ul {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 64px;
 }
 
 nav ul li a {
@@ -41,4 +56,80 @@ a.homeLogoLink img {
   filter: brightness(0) saturate(100%) invert(92%) sepia(15%) saturate(177%)
     hue-rotate(308deg) brightness(100%) contrast(112%);
   max-width: 50px;
+}
+
+/* Home Page */
+main.homePage {
+  color: #fffbfc;
+  background: url("./assets/homePageBKG.jpg") no-repeat 0 95%;
+  background-size: cover;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+section.hero {
+  flex: 2;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+section.hero h1 {
+  font-size: 42px;
+}
+
+section.hero p {
+  font-size: 20px;
+  margin-bottom: 32px;
+}
+
+section.hero button {
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 24px;
+  background-color: #007ea7;
+  color: #fffbfc;
+  border: 2px solid #005c85;
+  border-radius: 4px;
+  width: 200px;
+  padding: 8px;
+}
+
+section.hero button:hover {
+  filter: brightness(0.8);
+}
+
+section.hero button:active {
+  filter: brightness(0.6);
+}
+
+section.cards {
+  color: #0a0c09;
+  background-color: #fffbfc;
+  padding: 10px 20px;
+  flex: 1;
+
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 10%;
+}
+
+div.card {
+  max-width: 300px;
+  padding: 12px;
+  border-left: 10px solid #800e13;
+  border-radius: 8px 0 0 8px;
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  flex: 1;
+}
+
+div.card h2 {
+  margin-bottom: 24px;
 }

@@ -133,3 +133,36 @@ div.card {
 div.card h2 {
   margin-bottom: 24px;
 }
+
+/* Shop Page */
+main.shopPage {
+  display: grid;
+  grid-template-rows: fit-content 1fr;
+  grid-template-columns: 1fr 5fr;
+  
+}
+
+.shopPage div.filters {
+  grid-column: 1 / 3;
+}
+
+main.shopPage > * {
+  border: 2px solid black;
+}
+
+div.filters {
+  background-color: #fffbfc;
+  position: sticky;
+  top: 0px;
+}
+
+div.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+div.itemCard img {
+  height: 250px;
+  width: 250px;
+}

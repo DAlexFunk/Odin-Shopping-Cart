@@ -8,12 +8,23 @@ export default function ShopPage() {
     rating: 0,
     price: NaN,
   });
+  const [sort, setSort] = useState("none");
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((results) => results.json())
       .then((items) => setItems(items));
   }, []);
+
+  // Loading Screen
+  if (items.length === 0) {
+    return (
+      <div className="loadingScreen">
+        <div className="loadingIcon"></div>
+        <div className="loadingText">Loading...</div>
+      </div>
+    );
+  }
 
   const filtered = items.filter(
     (item) =>
@@ -28,15 +39,22 @@ export default function ShopPage() {
         : true)
   );
 
-  // Loading Screen
-  if (items.length === 0) {
-    return (
-      <div className="loadingScreen">
-        <div className="loadingIcon"></div>
-        <div className="loadingText">Loading...</div>
-      </div>
-    );
-  }
+  const sorted = filtered.toSorted((item1, item2) => {
+    switch (sort) {
+      case "none":
+        return item1.id - item2.id;
+      case "PHL":
+        return item2.price - item1.price;
+      case "PLH":
+        return item1.price - item2.price;
+      case "RHL":
+        return item2.rating.rate - item1.rating.rate;
+      case "RLH":
+        return item1.rating.rate - item2.rating.rate;
+      default:
+        throw new Error("Unrecognized Sort");
+    }
+  });
 
   return (
     <main className="shopPage">
@@ -89,13 +107,45 @@ export default function ShopPage() {
       </div>
 
       <div className="sortOptions">
-        <h1>Sort Options</h1>
+        <div className="sorts">
+          <h1>Sort Options</h1>
+          <button
+            className={sort === "none" ? "active" : ""}
+            onClick={() => setSort("none")}
+          >
+            No Sort
+          </button>
+          <button
+            className={sort === "PHL" ? "active" : ""}
+            onClick={() => setSort("PHL")}
+          >
+            Price High to Low
+          </button>
+          <button
+            className={sort === "PLH" ? "active" : ""}
+            onClick={() => setSort("PLH")}
+          >
+            Price Low to High
+          </button>
+          <button
+            className={sort === "RHL" ? "active" : ""}
+            onClick={() => setSort("RHL")}
+          >
+            Rating High to Low
+          </button>
+          <button
+            className={sort === "RLH" ? "active" : ""}
+            onClick={() => setSort("RLH")}
+          >
+            Rating Low to High
+          </button>
+        </div>
       </div>
 
       <div className="itemsSection">
         <h1>Items</h1>
         <div className="items">
-          {filtered.map((item) => (
+          {sorted.map((item) => (
             <ItemCard item={item} key={item.id} />
           ))}
         </div>
@@ -110,8 +160,8 @@ function ItemCard({ item }) {
       <img src={item.image} />
       <div className="textContent">
         <h2>{item.title}</h2>
-        <p>${item.price}</p>
-        <p>
+        <p className="price">${item.price}</p>
+        <p className="rating">
           {item.rating.rate}
           <svg
             className="star"

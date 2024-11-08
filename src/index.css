@@ -195,6 +195,7 @@ div.items {
 div.itemCard {
   position: relative;
   background-color: #fffbfc;
+  height: 450px;
   padding: 3px;
   border-left: 8px solid #007ea7;
   border-radius: 8px 0 0 8px;
@@ -212,6 +213,13 @@ div.itemCard div.textContent {
 div.itemCard p {
   display: flex;
   align-items: flex-end;
+
+  position: absolute;
+  bottom: 3px;
+}
+
+div.itemCard p.rating {
+  left: 50%;
 }
 
 div.itemCard h2 {
@@ -242,4 +250,27 @@ div.itemCard button:hover {
 div.itemCard button:active {
   filter: brightness(65%);
   transform: translateY(2px);
+}
+
+div.sorts {
+  position: sticky;
+  top: 8%;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+div.sorts h1 {
+  text-align: center;
+}
+
+div.sorts button {
+  width: 75%;
+}
+
+div.sorts button.active {
+  border: 2px solid red;
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import * as _ from "lodash";
 
 export default function ShopPage() {
   const [items, setItems] = useState([]);
@@ -9,6 +10,7 @@ export default function ShopPage() {
     price: NaN,
   });
   const [sort, setSort] = useState("none");
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -105,6 +107,13 @@ export default function ShopPage() {
           <option value="500">$500-$749.99</option>
           <option value="750">$750-$1000</option>
         </select>
+
+        <div className="cart">
+          <button className="cartButton"></button>
+          <div className={cart.length > 0 ? "cartNumber active" : "cartNumber"}>
+            {cart.length}
+          </div>
+        </div>
       </div>
 
       <div className="sortOptions">
@@ -147,7 +156,7 @@ export default function ShopPage() {
         <h1>Items</h1>
         <div className="items">
           {sorted.map((item) => (
-            <ItemCard item={item} key={item.id} />
+            <ItemCard item={item} cart={cart} setCart={setCart} key={item.id} />
           ))}
         </div>
       </div>
@@ -155,7 +164,7 @@ export default function ShopPage() {
   );
 }
 
-function ItemCard({ item }) {
+function ItemCard({ item, cart, setCart }) {
   return (
     <div className="itemCard" key={item.id}>
       <img src={item.image} />
@@ -176,7 +185,21 @@ function ItemCard({ item }) {
           </svg>
         </p>
       </div>
-      <button>Add to Cart</button>
+      <button
+        onClick={() => {
+          for (const itemInCart of cart) {
+            if (_.isEqual(itemInCart, item)) {
+              return;
+            }
+          }
+
+          const copy = [...cart];
+          copy.push(item);
+          setCart(copy);
+        }}
+      >
+        Add to Cart
+      </button>
     </div>
   );
 }

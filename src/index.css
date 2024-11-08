@@ -69,6 +69,25 @@ a.homeLogoLink img {
   max-width: 50px;
 }
 
+/* Error Page */
+main.errorPage {
+  height: 100%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+main.errorPage div.faceEmoticon {
+  background-image: url("./assets/emoticon-cry-outline.svg");
+  height: 100px;
+  width: 100px;
+
+  filter: invert(70%);
+}
+
 /* Home Page */
 main.homePage {
   color: #fffbfc;

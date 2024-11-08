@@ -28,6 +28,16 @@ export default function ShopPage() {
         : true)
   );
 
+  // Loading Screen
+  if (items.length === 0) {
+    return (
+      <div className="loadingScreen">
+        <div className="loadingIcon"></div>
+        <div className="loadingText">Loading...</div>
+      </div>
+    )
+  }
+
   return (
     <main className="shopPage">
       <div className="filters">
@@ -86,7 +96,7 @@ export default function ShopPage() {
         <h1>Items</h1>
         <div className="items">
           {filtered.map((item) => (
-            <ItemCard item={item}/>
+            <ItemCard item={item} key={item.id} />
           ))}
         </div>
       </div>

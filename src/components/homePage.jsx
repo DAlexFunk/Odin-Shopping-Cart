@@ -19,7 +19,7 @@ export default function HomePage() {
           <h2>The best online shopping</h2>
           <p>
             We rival all other online shopping methods for the lowest prices and
-            best deals
+            best deals.
           </p>
         </div>
         <div className="card">
@@ -33,7 +33,7 @@ export default function HomePage() {
           <h2>Only local real sellers</h2>
           <p>
             We go out of our way to find only local sellers near YOUR location.
-            We just need your location to find the sellers
+            We just need your location to find the sellers.
           </p>
         </div>
       </section>

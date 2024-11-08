@@ -61,6 +61,7 @@ export default function ShopPage() {
       <div className="filters">
         <h1>Filters</h1>
         <input
+          placeholder="Search this page..."
           type="text"
           value={filter.query}
           onChange={(evt) => setFilter({ ...filter, query: evt.target.value })}

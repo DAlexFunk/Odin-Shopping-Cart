@@ -11,6 +11,7 @@ html {
 body {
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
 }
 
 div#root {
@@ -219,6 +220,7 @@ div.filters select {
 }
 
 div.itemsSection {
+  position: relative;
   background-color: #fffbfc;
   padding: 12px 24px;
 }
@@ -369,4 +371,31 @@ div.cartNumber {
 
 div.cartNumber.active {
   transform: scale(1);
+}
+
+
+aside.cart {
+  background-color: #007ea7;
+  z-index: 4;
+  max-width: 400px;
+  height: 100%;
+  box-shadow: 2px 0 5px 5px rgba(0,0,0,0.75);
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  transition: transform 1s, visibility 1s;
+  transform: translateX(105%);
+  visibility: hidden;
+}
+
+aside.cart.active {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+div.cartItem p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

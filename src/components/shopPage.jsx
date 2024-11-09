@@ -11,6 +11,7 @@ export default function ShopPage() {
   });
   const [sort, setSort] = useState("none");
   const [cart, setCart] = useState([]);
+  const [cartVisibility, setCartVisibility] = useState(false);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -109,7 +110,12 @@ export default function ShopPage() {
         </select>
 
         <div className="cart">
-          <button className="cartButton"></button>
+          <button
+            className="cartButton"
+            onClick={() => {
+              setCartVisibility(!cartVisibility);
+            }}
+          ></button>
           <div className={cart.length > 0 ? "cartNumber active" : "cartNumber"}>
             {cart.length}
           </div>
@@ -159,6 +165,12 @@ export default function ShopPage() {
             <ItemCard item={item} cart={cart} setCart={setCart} key={item.id} />
           ))}
         </div>
+        <ItemCart
+          cart={cart}
+          setCart={setCart}
+          cartVisibility={cartVisibility}
+          setCartVisibility={setCartVisibility}
+        />
       </div>
     </main>
   );
@@ -188,18 +200,51 @@ function ItemCard({ item, cart, setCart }) {
       <button
         onClick={() => {
           for (const itemInCart of cart) {
-            if (_.isEqual(itemInCart, item)) {
+            if (_.isEqual(itemInCart, { ...item, count: 1 })) {
               return;
             }
           }
-
           const copy = [...cart];
-          copy.push(item);
+          copy.push({ ...item, count: 1 });
           setCart(copy);
         }}
       >
         Add to Cart
       </button>
     </div>
+  );
+}
+
+function ItemCart({ cart, setCart, cartVisibility, setCartVisibility }) {
+  return (
+    <aside className={cartVisibility ? "cart active" : "cart"}>
+      <h1>Cart</h1>
+      <div className="cartItems">
+        {cart.map((itemInCart) => {
+          return (
+            <div className="cartItem">
+              <p>{itemInCart.title}</p>
+              <input
+                key={itemInCart.id}
+                type="number"
+                min="1"
+                value={itemInCart.count}
+                onChange={(evt) => {
+                  const cartCopy = [...cart];
+                  for (const cartItem of cartCopy) {
+                    if (_.isEqual(cartItem, itemInCart)) {
+                      cartCopy[cart.indexOf(itemInCart)].count = evt.target.value;
+                      setCart(cartCopy);
+                      return;
+                    }
+                  }
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
+      <p className="totalPrice">${(cart.reduce((sum, currentItem) => sum + (currentItem.price * currentItem.count), 0)).toFixed(2)}</p>
+    </aside>
   );
 }

@@ -427,3 +427,33 @@ li.cartItem input:invalid {
 li.cartItem button {
   margin-left: 10px;
 }
+
+
+/* Checkout Page */
+main.checkoutPage {
+  background-color: #fffbfc;
+  text-align: center;
+  height: 100vh;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main.checkoutPage div.checkoutImg {
+  background: url("./assets/store-check.svg");
+  height: 200px;
+  width: 200px;
+}
+
+footer.checkoutFooter {
+  background-color: #800e13;
+  color: #fffbfc;
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

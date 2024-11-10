@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import * as _ from "lodash";
+import { Navigate } from "react-router-dom";
 
 export default function ShopPage() {
   const [items, setItems] = useState([]);
@@ -215,6 +216,12 @@ function ItemCard({ item, cart, setCart }) {
 }
 
 function ItemCart({ cart, setCart, cartVisibility }) {
+  const [checkout, setCheckout] = useState(false);
+
+  if (checkout) {
+    return <Navigate to="/checkout" />;
+  }
+
   return (
     <aside className={cartVisibility ? "cart active" : "cart"}>
       <h1>Cart</h1>
@@ -274,6 +281,10 @@ function ItemCart({ cart, setCart, cartVisibility }) {
 
       <button className="clearCart" onClick={() => setCart([])}>
         Clear Cart
+      </button>
+
+      <button className="checkout" onClick={() => setCheckout(true)}>
+        Checkout
       </button>
     </aside>
   );

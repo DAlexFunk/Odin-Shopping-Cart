@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import HomePage from "./components/homePage.jsx";
 import ShopPage from "./components/shopPage.jsx";
 import ErrorPage from "./components/errorPage.jsx";
+import CheckoutPage from "./components/checkout.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
       { path: "shop", element: <ShopPage /> },
     ],
   },
+  {
+    path: "checkout",
+    element: <CheckoutPage />,
+    errorElement: <ErrorPage />
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(

@@ -376,8 +376,8 @@ div.cartNumber.active {
 
 aside.cart {
   background-color: #007ea7;
-  z-index: 4;
-  max-width: 400px;
+  color: #fffbfc;
+  width: 400px;
   height: 100%;
   box-shadow: 2px 0 5px 5px rgba(0,0,0,0.75);
   position: absolute;
@@ -389,13 +389,41 @@ aside.cart {
   visibility: hidden;
 }
 
+aside.cart > h1,
+aside.cart > p,
+aside.cart > button {
+  margin: 12px 0 0 12px;
+}
+
 aside.cart.active {
   transform: translateX(0);
   visibility: visible;
 }
 
-div.cartItem p {
+ul.cartItems li {
+  margin: 24px 0;
+}
+
+li.cartItem {
+  background-color: #005c85;
+  padding: 6px 12px;
+  list-style-type: none;
+}
+
+li.cartItem p {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+li.cartItem input {
+  width: 3rem;
+}
+
+li.cartItem input:invalid {
+  border: 2px solid red;
+}
+
+li.cartItem button {
+  margin-left: 10px;
 }

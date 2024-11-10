@@ -169,7 +169,6 @@ export default function ShopPage() {
           cart={cart}
           setCart={setCart}
           cartVisibility={cartVisibility}
-          setCartVisibility={setCartVisibility}
         />
       </div>
     </main>
@@ -215,17 +214,19 @@ function ItemCard({ item, cart, setCart }) {
   );
 }
 
-function ItemCart({ cart, setCart, cartVisibility, setCartVisibility }) {
+function ItemCart({ cart, setCart, cartVisibility }) {
   return (
     <aside className={cartVisibility ? "cart active" : "cart"}>
       <h1>Cart</h1>
-      <div className="cartItems">
+      <ul className="cartItems">
         {cart.map((itemInCart) => {
           return (
-            <div className="cartItem">
+            <li className="cartItem" key={itemInCart.id}>
               <p>{itemInCart.title}</p>
+
+              <label htmlFor="cartItem">Amount: </label>
               <input
-                key={itemInCart.id}
+                id="cartItem"
                 type="number"
                 min="1"
                 value={itemInCart.count}
@@ -233,18 +234,47 @@ function ItemCart({ cart, setCart, cartVisibility, setCartVisibility }) {
                   const cartCopy = [...cart];
                   for (const cartItem of cartCopy) {
                     if (_.isEqual(cartItem, itemInCart)) {
-                      cartCopy[cart.indexOf(itemInCart)].count = evt.target.value;
+                      cartCopy[cart.indexOf(itemInCart)].count =
+                        evt.target.value;
                       setCart(cartCopy);
                       return;
                     }
                   }
                 }}
               />
-            </div>
+
+              <button
+                className="cartItemRemove"
+                onClick={(evt) => {
+                  const cartCopy = [...cart];
+                  for (const cartItem of cartCopy) {
+                    if (_.isEqual(cartItem, itemInCart)) {
+                      cartCopy.splice(cart.indexOf(itemInCart), 1);
+                      setCart(cartCopy);
+                      return;
+                    }
+                  }
+                }}
+              >
+                Remove Item
+              </button>
+            </li>
           );
         })}
-      </div>
-      <p className="totalPrice">${(cart.reduce((sum, currentItem) => sum + (currentItem.price * currentItem.count), 0)).toFixed(2)}</p>
+      </ul>
+      <p className="totalPrice">
+        Total: $
+        {cart
+          .reduce(
+            (sum, currentItem) => sum + currentItem.price * currentItem.count,
+            0
+          )
+          .toFixed(2)}
+      </p>
+
+      <button className="clearCart" onClick={() => setCart([])}>
+        Clear Cart
+      </button>
     </aside>
   );
 }

@@ -22,8 +22,8 @@ const router = createBrowserRouter([
   {
     path: "checkout",
     element: <CheckoutPage />,
-    errorElement: <ErrorPage />
-  }
+    errorElement: <ErrorPage />,
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(

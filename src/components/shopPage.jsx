@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import * as _ from "lodash";
 import { Navigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import * as _ from "lodash";
 
 export default function ShopPage() {
   const [items, setItems] = useState([]);
@@ -78,8 +79,8 @@ export default function ShopPage() {
           }
         >
           <option value="">No Category Selected</option>
-          <option value="men's clothing">Men's Clothing</option>
-          <option value="women's clothing">Women's Clothing</option>
+          <option value="men's clothing">Men&apos;s Clothing</option>
+          <option value="women's clothing">Women&apos;s Clothing</option>
           <option value="jewelery">Jewelery</option>
           <option value="electronics">Electronics</option>
         </select>
@@ -215,6 +216,12 @@ function ItemCard({ item, cart, setCart }) {
   );
 }
 
+ItemCard.propTypes = {
+  item: PropTypes.object,
+  cart: PropTypes.arrayOf(PropTypes.object),
+  setCart: PropTypes.func,
+};
+
 function ItemCart({ cart, setCart, cartVisibility }) {
   const [checkout, setCheckout] = useState(false);
 
@@ -252,7 +259,7 @@ function ItemCart({ cart, setCart, cartVisibility }) {
 
               <button
                 className="cartItemRemove"
-                onClick={(evt) => {
+                onClick={() => {
                   const cartCopy = [...cart];
                   for (const cartItem of cartCopy) {
                     if (_.isEqual(cartItem, itemInCart)) {
@@ -289,3 +296,9 @@ function ItemCart({ cart, setCart, cartVisibility }) {
     </aside>
   );
 }
+
+ItemCart.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.object),
+  setCart: PropTypes.func,
+  cartVisibility: PropTypes.bool,
+};

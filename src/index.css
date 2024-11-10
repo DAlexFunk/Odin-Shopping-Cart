@@ -21,7 +21,7 @@ div#root {
   flex-direction: column;
 }
 
-select, 
+select,
 input,
 button {
   font-family: inherit;
@@ -37,7 +37,7 @@ nav {
   position: relative;
   background-color: #800e13;
   padding: 0 32px 0 12px;
-  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 nav ul {
@@ -73,7 +73,7 @@ a.homeLogoLink img {
 /* Error Page */
 main.errorPage {
   height: 100%;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -157,7 +157,7 @@ div.card {
   padding: 12px;
   border-left: 10px solid #800e13;
   border-radius: 8px 0 0 8px;
-  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
   flex: 1;
 }
 
@@ -190,7 +190,6 @@ div.loadingIcon {
     transform: rotate(360deg);
   }
 }
-
 
 main.shopPage {
   display: grid;
@@ -239,7 +238,7 @@ div.itemCard {
   padding: 3px;
   border-left: 8px solid #007ea7;
   border-radius: 8px 0 0 8px;
-  box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.75);
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -373,13 +372,12 @@ div.cartNumber.active {
   transform: scale(1);
 }
 
-
 aside.cart {
   background-color: #007ea7;
   color: #fffbfc;
   width: 400px;
   height: 100%;
-  box-shadow: 2px 0 5px 5px rgba(0,0,0,0.75);
+  box-shadow: 2px 0 5px 5px rgba(0, 0, 0, 0.75);
   position: absolute;
   right: 0;
   top: 0;
@@ -428,13 +426,12 @@ li.cartItem button {
   margin-left: 10px;
 }
 
-
 /* Checkout Page */
 main.checkoutPage {
   background-color: #fffbfc;
   text-align: center;
   height: 100vh;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -6,15 +6,15 @@ This is the shopping cart project from The Odin Project. This page is a simple s
 
 ## Use
 * The page can be accessed [here](https://dalexfunk-shopping-cart.netlify.app/).
-* The app started on the homepahe with some basic info.
+* The app started on the homepage with some basic info.
 * Use either the start button or the header to access the shop page.
-* On the shop page, filter items using the options at the top and/or sort the items with the opions on the left.
+* On the shop page, filter items using the options at the top and/or sort the items with the options on the left.
 * Click the add to cart button to add the an item to the cart (defaults to 1 item).
 * Click the cart button in the top right to open the cart, view the cart, change the number of items, remove items, and view the total.
-* Click the checkout button to checkout the cart.
+* Click the checkout button to check out the cart.
 * On the checkout page, click the home button to return home.
 
 ## Credits
 * [The Odin Project](https://www.theodinproject.com) for providing the outline for the project and providing the skills necessary.
 
-* [Fake Store API](https://fakestoreapi.com/) for providing the information for each item in the shop page.
+* [Fake Store API](https://fakestoreapi.com/) for providing the information for each item on the shop page.
